@@ -78,5 +78,34 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
+
+app.get('/about', async (req, res) => {
+  try {
+    const aboutData = {
+      name: "Shaurya Jain",
+      bio: [
+        "Hi, I'm Shaurya. I'm a student at NYU, studying computer science and business at New York University. I love exploring New York, trying new cafes and restaurants. I’m really into sports, especially lifting weights and learning pickleball. After school, I want to work at a startup because I thrive on intensity and passion. Right now, I’m building a FinTech app in my agile class and working on a project called Muse.space."
+      ],
+      imageUrl: "https://media.licdn.com/dms/image/v2/D4E03AQHt76pcKkMaNQ/profile-displayphoto-crop_800_800/B4EZlkbSarIoAI-/0/1758326499389?e=1762387200&v=beta&t=wh2uAH3MdDATcet8LPnbbwud-I6yxfhuK14NCrH-zn4"
+    }
+    res.json({
+      about: aboutData,
+      status: 'all good',
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'failed to retrieve about data',
+    })
+  }
+})
+
+
+
+
+
+
+
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
